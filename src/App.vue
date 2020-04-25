@@ -1,29 +1,42 @@
 <template>
-  <div>
-    <h2>Twój email to:{{email}}</h2>
+    <div>
 
-    <div v-if="email.length < 10">Ale masz krótki adres!</div>
-    <div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
-    <div v-else>Twój adres e-mail jest stanowczo za długi.</div>
-    <input type="email" v-model="email">
-    <button @click="alertMyEmail()">Wyświetl mój e-mail w alercie</button>
-  </div>
+        <div v-if="authenticatedUsername != ''">
+            <h3 v-if="authenticatedUsername">Jestes zalogowany jako: {{email}}</h3>
+            <a @click="logMeOut">Wyjdz</a>
+        </div>
+        <div v-else>
+            <h1>Witaj w systemie do zapisów na zajęcia</h1>
+            <p>Zaloguj się e-mailem</p><input type="email" v-model="email">
+            <button @click="logMeIn">Wchodzę</button>
+        </div>
+
+
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-export default {
-  data () {
-    return {
-      email: ''
-    };
-  },
-  methods: {
-    alertMyEmail() {
-      alert(this.email);
+    import HelloWorld from './components/HelloWorld.vue'
+
+    export default {
+        data() {
+            return {
+                email: '',
+                authenticatedUsername: ''
+            };
+        },
+        methods: {
+            logMeIn() {
+                this.authenticatedUsername = this.email,
+                this.email = ''
+            },
+            logMeOut(){
+                this.authenticatedUsername = '';
+
+            }
+
+        }
     }
-  }
-}
 </script>
 
 <style>
