@@ -1,14 +1,13 @@
 <template>
     <div>
-
+        <h1>Witaj w systemie zapisów na zajecia</h1>
         <div v-if="authenticatedUsername != ''">
-            <h3 v-if="authenticatedUsername">Jestes zalogowany jako: {{email}}</h3>
+            <h3 v-if="authenticatedUsername">Jestes zalogowany jako: {{authenticatedUsername}}</h3>
             <a @click="logMeOut">Wyjdz</a>
         </div>
         <div v-else>
-            <h1>Witaj w systemie do zapisów na zajęcia</h1>
-            <p>Zaloguj się e-mailem</p><input type="email" v-model="email">
-            <button @click="logMeIn">Wchodzę</button>
+            <login-form @login="logMeIn($event)"></login-form>
+
         </div>
 
 
@@ -16,10 +15,11 @@
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
     import "milligram";
+    import LoginForm from "./LoginForm";
 
     export default {
+        components: {LoginForm},
         data() {
             return {
                 email: '',
@@ -27,13 +27,12 @@
             };
         },
         methods: {
-            logMeIn() {
-                this.authenticatedUsername = this.email,
-                this.email = ''
-            },
-            logMeOut(){
-                this.authenticatedUsername = '';
+            logMeIn(userName) {
+                this.authenticatedUsername = userName;
 
+            },
+            logMeOut() {
+                this.authenticatedUsername = ''
             }
 
         }
