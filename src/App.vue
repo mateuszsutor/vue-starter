@@ -3,8 +3,8 @@
 
         <h1>Witaj w systemie zapisów na zajecia</h1>
 
-        <div v-if="authenticatedUsername != ''">
-            <logout-form @logout="logMeOut($event)" ></logout-form>
+        <div v-if="authenticatedUsername !== ''">
+            <logout-form @logout="logMeOut()" ></logout-form>
             <meeting-page></meeting-page>
 
         </div>

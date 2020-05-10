@@ -7,19 +7,17 @@
 
 <script>
     export default {
-        props: ['username'],
+
         data() {
             return {
-                username: '',
+                authenticatedUsername: '',
             }
         },
         methods: {
             logout() {
                 this.$emit('logout', false);
-            },
-
+            }
         }
-
     }
 </script>
 
