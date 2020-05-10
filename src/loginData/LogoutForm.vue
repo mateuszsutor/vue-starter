@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h2 >Witaj {{this.$parent.authenticatedUsername}}!</h2>
-        <button @click="logout()" >Wyloguj</button>
+    <div class="row">
+        <h2 class="column">Witaj {{this.$parent.authenticatedUsername}}!</h2>
+        <button class="column-70 button button-outline" @click="logout()" >Wyloguj</button>
     </div>
 </template>
 

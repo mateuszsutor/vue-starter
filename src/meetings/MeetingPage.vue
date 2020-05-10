@@ -1,8 +1,13 @@
 <template>
     <div>
-        <h2>Zajęcia</h2>
-        <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-        <meetings-list :meetings="meetings"></meetings-list>
+        <div v-if="meetings.length === 0">
+            <button @click="addNewMeeting">Dodaj nowe spotkanie</button>
+            <p>Brak zaplanowanych spotkań</p>
+        </div>
+        <div v-else>
+            <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
+            <meetings-list :meetings="meetings"></meetings-list>
+        </div>
     </div>
 </template>
 
@@ -24,3 +29,9 @@
         }
     }
 </script>
+
+<style>
+    .button {
+        margin: 10px;
+    }
+</style>
