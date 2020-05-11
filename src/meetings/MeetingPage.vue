@@ -7,8 +7,9 @@
         <div v-else>
             <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
             <meetings-list :meetings="meetings" :user="username"
-                            @register="addUserToMeeting">
-
+                            @register="addUserToMeeting($event)"
+                            @leave="removeUserFromMeeting($event)"
+                            @delete="deleteEmptyMeeting($event)">
             </meetings-list>
         </div>
     </div>
@@ -32,8 +33,17 @@
             },
 
             addUserToMeeting(meeting){
-                meeting.meetingsUsers.push(this.username)
+                meeting.meetingUsers.push(this.username)
+            },
+
+            removeUserFromMeeting(meeting) {
+                meeting.meetingUsers.splice(meeting.meetingUsers.indexOf(this.username), 1);
+            },
+
+            deleteEmptyMeeting(meeting) {
+                this.meetings.splice(this.meetings.indexOf(meeting), 1);
             }
+
         }
     }
 </script>
