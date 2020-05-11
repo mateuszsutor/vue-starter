@@ -1,17 +1,17 @@
 <template>
+
     <div>
-        <div v-if="meetings.length === 0">
-            <button @click="addNewMeeting">Dodaj nowe spotkanie</button>
-            <p>Brak zaplanowanych spotkań</p>
-        </div>
-        <div v-else>
-            <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-            <meetings-list :meetings="meetings" :user="username"
-                            @register="addUserToMeeting($event)"
-                            @leave="removeUserFromMeeting($event)"
-                            @delete="deleteEmptyMeeting($event)">
-            </meetings-list>
-        </div>
+
+        <new-meeting-form v-if="showOption" @added="addNewMeeting($event)"></new-meeting-form>
+
+        <button v-else class="button" @click="showMeetingForm">Dodaj nowe spotkanie</button>
+
+        <meetings-list :meetings="meetings" :user="username"
+                       @register="addUserToMeeting($event)"
+                       @leave="removeUserFromMeeting($event)"
+                       @delete="deleteEmptyMeeting($event)"></meetings-list>
+
+
     </div>
 </template>
 
@@ -22,18 +22,22 @@
     export default {
         components: {NewMeetingForm, MeetingsList},
         props: ['username'],
+
         data() {
             return {
-                meetings: []
+                meetings: [],
+                showOption: false,
+
             };
         },
         methods: {
             addNewMeeting(meeting) {
                 this.meetings.push(meeting);
+                this.showOption = false;
             },
 
-            addUserToMeeting(meeting){
-                meeting.meetingUsers.push(this.username)
+            addUserToMeeting(meeting) {
+                meeting.meetingUsers.push(this.username);
             },
 
             removeUserFromMeeting(meeting) {
@@ -42,14 +46,14 @@
 
             deleteEmptyMeeting(meeting) {
                 this.meetings.splice(this.meetings.indexOf(meeting), 1);
+            },
+
+            showMeetingForm() {
+                this.showOption = true;
             }
 
         }
     }
 </script>
 
-<style>
-    .button {
-        margin: 10px;
-    }
-</style>
+
