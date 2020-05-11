@@ -4,13 +4,14 @@
         <h1>System do zapisów na zajęcia</h1>
 
         <div v-if="authenticatedUsername !== ''">
-            <logout-form @logout="logMeOut()" ></logout-form>
-            <meeting-page :username="authenticatedUsername"></meeting-page>
+            <logout-form @logout="logMeOut()"></logout-form>
         </div>
 
         <div v-else>
-            <login-form @login="logMeIn($event)" ></login-form>
+            <login-form @login="logMeIn($event)"></login-form>
         </div>
+
+        <meeting-page v-show="authenticatedUsername" :username="authenticatedUsername"></meeting-page>
 
     </div>
 </template>
