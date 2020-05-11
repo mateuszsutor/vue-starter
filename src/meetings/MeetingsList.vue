@@ -7,7 +7,7 @@
                 <tr>
                     <th>Nazwa spotkania</th>
                     <th>Opis</th>
-                    <th>Użytkownik</th>
+                    <th>Uczestnicy</th>
                     <th></th>
                 </tr>
                 </thead>

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-        <h1>Witaj w systemie zapisów na zajecia</h1>
+        <h1>System do zapisów na zajęcia</h1>
 
         <div v-if="authenticatedUsername !== ''">
             <logout-form @logout="logMeOut()" ></logout-form>
