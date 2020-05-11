@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-
         <h1>System do zapisów na zajęcia</h1>
 
         <div v-if="authenticatedUsername !== ''">
@@ -38,7 +37,6 @@
             logMeOut() {
                 this.authenticatedUsername = ''
             }
-
         }
     }
 </script>

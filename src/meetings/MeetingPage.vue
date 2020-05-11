@@ -1,7 +1,5 @@
 <template>
-
     <div>
-
         <new-meeting-form v-if="showOption" @added="addNewMeeting($event)"></new-meeting-form>
 
         <button v-else class="button" @click="showMeetingForm">Dodaj nowe spotkanie</button>
@@ -10,8 +8,6 @@
                        @register="addUserToMeeting($event)"
                        @leave="removeUserFromMeeting($event)"
                        @delete="deleteEmptyMeeting($event)"></meetings-list>
-
-
     </div>
 </template>
 
@@ -27,7 +23,6 @@
             return {
                 meetings: [],
                 showOption: false,
-
             };
         },
         methods: {
@@ -51,16 +46,14 @@
             showMeetingForm() {
                 this.showOption = true;
             }
-
         }
     }
 </script>
 <style>
     .button {
-        margin: 10px 0px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
-
-
 </style>
 
 
