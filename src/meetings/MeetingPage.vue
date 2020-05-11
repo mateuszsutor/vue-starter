@@ -6,7 +6,10 @@
         </div>
         <div v-else>
             <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
-            <meetings-list :meetings="meetings"></meetings-list>
+            <meetings-list :meetings="meetings" :user="username"
+                            @register="addUserToMeeting">
+
+            </meetings-list>
         </div>
     </div>
 </template>
@@ -17,6 +20,7 @@
 
     export default {
         components: {NewMeetingForm, MeetingsList},
+        props: ['username'],
         data() {
             return {
                 meetings: []
@@ -25,6 +29,10 @@
         methods: {
             addNewMeeting(meeting) {
                 this.meetings.push(meeting);
+            },
+
+            addUserToMeeting(meeting){
+                meeting.meetingsUsers.push(this.username)
             }
         }
     }

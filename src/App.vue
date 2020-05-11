@@ -5,7 +5,7 @@
 
         <div v-if="authenticatedUsername !== ''">
             <logout-form @logout="logMeOut()" ></logout-form>
-            <meeting-page></meeting-page>
+            <meeting-page :username="authenticatedUsername"></meeting-page>
 
         </div>
 
