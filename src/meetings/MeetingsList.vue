@@ -28,11 +28,12 @@
                                 @click="registerToMeeting(meeting)"
                                 v-if="meeting.meetingUsers.indexOf(user) < 0 ">Zapisz się</button>
 
-                        <button class="button button-outline" @click="leaveMeeting(meeting)"
+                        <button class="button button-outline"
+                                @click="leaveMeeting(meeting)"
                                 v-else>Wypisz się</button>
 
                         <button class="button"
-                                id="deleteButton"
+                                id="button-delete"
                                 @click="deleteEmptyMeeting(meeting)"
                                 v-if="meeting.meetingUsers.length === 0">Usuń puste spotkanie</button>
                     </td>
@@ -72,5 +73,8 @@
 <style>
     .button-controller {
         text-align: right;
+    }
+    #button-delete {
+        margin-left: 5px;
     }
 </style>
